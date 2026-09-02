@@ -96,7 +96,7 @@ copiar.addEventListener("click", function() {
     copiar.classList.add("animacion1")
 
     setTimeout(() => {
-        procesar.classList.remove("animacion1");
+        copiar.classList.remove("animacion1");
     }, 1000)
 })
 
