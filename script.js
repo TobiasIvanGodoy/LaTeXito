@@ -10,6 +10,8 @@ const traductor = {
     "noL": "¬",
     "implica": "⇒",
     "siSoloSi": "⇔",
+    "implicadoPor": "⇐",
+    "probado": "□",
 
     "menorIgual": "≤",
     "mayorIgual": "≥",

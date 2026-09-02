@@ -14,6 +14,8 @@ LaTeXito utiliza un diccionario de traducción para convertir palabras clave en 
 | `noL`       | ¬       |
 | `implica`  | ⇒       |
 | `siSoloSi` | ⇔       |
+`implicadoPor`| ⇐       |
+| `probado`  | □        |
 
 ## Comparadores
 
