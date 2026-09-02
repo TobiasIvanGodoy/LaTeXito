@@ -1,0 +1,63 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border-width: 0.5px;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+#principal {
+    width: 100vw;
+    height: 100vh;
+    padding: 2vh 2vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:last baseline;
+
+    gap: 4vh;
+}
+
+#botones {
+    width: 100%;
+    height: 10%;
+    padding: 2vh 2vw;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.boton {
+    height: 70px;
+    width: 150px;
+    background-color: rgba(244, 244, 244, 0.6);
+}
+
+#entrada {
+    width: 80%;
+    height: 80%;
+    padding: 1vh 1vw;
+}
+
+.animacion1 {
+    animation: confirmar 1s forwards;
+}
+
+@keyframes confirmar {
+    from {
+        background-color: rgba(0, 244, 0, 0.6);
+    }
+
+    to {
+        background-color: rgba(244, 244, 244, 0.6);
+    }
+}
