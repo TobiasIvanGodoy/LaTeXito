@@ -97,7 +97,7 @@ copiar.addEventListener("click", function() {
 
     setTimeout(() => {
         copiar.classList.remove("animacion1");
-    }, 1000)
+    }, 400)
 })
 
 procesar.addEventListener("click", function() {
@@ -122,5 +122,5 @@ procesar.addEventListener("click", function() {
 
     setTimeout(() => {
         procesar.classList.remove("animacion1");
-    }, 1000)
+    }, 400)
 });

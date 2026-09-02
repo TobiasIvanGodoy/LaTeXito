@@ -49,7 +49,7 @@ body {
 }
 
 .animacion1 {
-    animation: confirmar 1s forwards;
+    animation: confirmar 0.4s forwards;
 }
 
 @keyframes confirmar {
