@@ -88,17 +88,19 @@ const traductor = {
 };
 
 copiar.addEventListener("click", function() {
-    copiar.classList.remove("animacion1")
 
     const texto = document.getElementById("entrada");
 
     navigator.clipboard.writeText(texto.value)
 
     copiar.classList.add("animacion1")
+
+    setTimeout(() => {
+        procesar.classList.remove("animacion1");
+    }, 1000)
 })
 
 procesar.addEventListener("click", function() {
-    procesar.classList.remove("animacion1");
 
     const entrada = document.getElementById("entrada");
     const texto = entrada.value;
@@ -117,4 +119,8 @@ procesar.addEventListener("click", function() {
     entrada.value = procesado;
 
     procesar.classList.add("animacion1");
+
+    setTimeout(() => {
+        procesar.classList.remove("animacion1");
+    }, 1000)
 });
