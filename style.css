@@ -1,6 +1,6 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 24px;
+    font-size: 18px;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -18,36 +18,89 @@ body {
     padding: 2vh 2vw;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content:last baseline;
 
     gap: 4vh;
 }
 
-#botones {
-    width: 100%;
-    height: 10%;
-    padding: 2vh 2vw;
+@media (orientation: portrait) {
+    #principal {
+        width: 100vw;
+        height: 100vh;
+        padding: 2vh 2vw;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:last baseline;
+
+        gap: 4vh;
+    }   
+
+    .extra {
+        width: 100%;
+        height: 30%;
+        padding: 2vh 2vw;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+
+        gap: 4vh;
+    }
+
+    #entrada {
+        width: 95%;
+        height: 70%;
+        padding: 1vh 1vw;
+        border-style:solid;
+        overflow: auto;
+    }
+}
+
+@media (orientation: landscape) {
+    #principal {
+        width: 100vw;
+        height: 100vh;
+        padding: 2vh 2vw;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:last baseline;
+
+        gap: 4vh;
+    }  
+
+     .extra {
+        width: 100%;
+        height: 20%;
+        padding: 2vh 2vw;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    #entrada {
+        width: 80%;
+        height: 80%;
+        padding: 1vh 1vw;
+        border-style:solid;
+        overflow: auto;
+    }
 }
 
 .boton {
-    height: 70px;
-    width: 150px;
+    height: 20%;
+    aspect-ratio: 1/1;
     background-color: rgba(244, 244, 244, 0.6);
 }
-
-#entrada {
-    width: 80%;
-    height: 80%;
-    padding: 1vh 1vw;
-}
-
+    
 .animacion1 {
     animation: confirmar 0.4s forwards;
 }

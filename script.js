@@ -1,5 +1,5 @@
-const procesar = document.getElementById("procesar")
 const copiar = document.getElementById("copiar")
+const entrada = document.getElementById("entrada")
 
 const traductor = {
     "paraTodo": "∀",
@@ -31,6 +31,7 @@ const traductor = {
     "infinito": "∞",
     "proporcional": "∝",
     "tiende": "→",
+    "aleph0": "ℵ₀",
 
     "alpha": "α",
     "beta": "β",
@@ -86,9 +87,63 @@ const traductor = {
     "enteros": "ℤ",
     "racionales": "ℚ",
     "reales": "ℝ",
-    "complejos": "ℂ"
+    "complejos": "ℂ",
+
+    "^0" : "⁰",
+    "^1" : "¹",
+    "^2" : "²",
+    "^3" : "³",
+    "^4" : "⁴",
+    "^5" : "⁵",
+    "^6" : "⁶",
+    "^7" : "⁷",
+    "^8" : "⁸",
+    "^9" : "⁹",
+
+    "_0" : "₀",
+    "_1" : "₁",
+    "_2" : "₂",
+    "_3" : "₃",
+    "_4" : "₄",
+    "_5" : "₅",
+    "_6" : "₆",
+    "_7" : "₇",
+    "_8" : "₈",
+    "_9" : "₉",
+    
+    "^h" : "ʰ",
+    "^i" : "ⁱ",
+    "^j" : "ʲ",
+    "^k" : "ᵏ",
+    "^l" : "ˡ",
+    "^m" : "ᵐ",
+    "^n" : "ⁿ",
+    "^o" : "ᵒ",
+    "^p" : "ᵖ",
+    "^r" : "ʳ",
+    "^s" : "ˢ",
+    "^t" : "ᵗ",
+
+    "_h" : "ₕ",
+    "_i" : "ᵢ",
+    "_j" : "ⱼ",
+    "_k" : "ₖ",
+    "_l" : "ₗ",
+    "_m" : "ₘ",
+    "_n" : "ₙ",
+    "_o" : "ₒ",
+    "_p" : "ₚ",
+    "_r" : "ᵣ",
+    "_s" : "ₛ",
+    "_t" : "ₜ",
 };
 
+
+`Tareas restantes:
+-Cambiar el texto procesado por uno tipo innerHTML
+-Implementar superindices y subindices con <sup> y <sub>
+-Hacer el procesado ignore las secuencias de escape (Hecho)
+-Mejorar el diseño de la interfaz, opcional.`
 copiar.addEventListener("click", function() {
 
     const texto = document.getElementById("entrada");
@@ -102,27 +157,21 @@ copiar.addEventListener("click", function() {
     }, 400)
 })
 
-procesar.addEventListener("click", function() {
+entrada.addEventListener("keydown", (event) => {
+    if (event.key == " ") {
+        const entrada = document.getElementById("entrada");
+        const texto = entrada.value;
+        const palabras = texto.split(/(\s+)/);
+        let procesado = "";
 
-    const entrada = document.getElementById("entrada");
-    const texto = entrada.value;
-    const palabras = texto.split(" ");
-    let procesado = "";
-
-    for (const palabra of palabras) {
-        if (traductor[palabra]) {
-            procesado += traductor[palabra];
-        } else {
-            procesado += palabra;
+        for (const palabra of palabras) {
+            if (traductor[palabra]) {
+                procesado += traductor[palabra];
+            } else {
+                procesado += palabra;
+            }
         }
-        procesado += " ";
+
+        entrada.value = procesado.trim();
     }
-
-    entrada.value = procesado;
-
-    procesar.classList.add("animacion1");
-
-    setTimeout(() => {
-        procesar.classList.remove("animacion1");
-    }, 400)
 });
