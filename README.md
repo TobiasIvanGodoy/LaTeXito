@@ -1,7 +1,27 @@
 # Diccionario
 
-LaTeXito utiliza un diccionario de traducción para convertir palabras clave en símbolos matemáticos. Las palabras se escriben en **camelCase**.
+LaTeXito utiliza un diccionario de traducción para convertir palabras clave en símbolos matemáticos. Las palabras clave deben escribirse utilizando **camelCase**.
+
+## Sintaxis de los símbolos
+
+LaTeXito procesa la entrada **palabra por palabra**. Por este motivo, los elementos que se quieran traducir deben estar separados por espacios.
+
+Esto es especialmente importante para los superíndices y subíndices, que utilizan `^` y `_` como sintaxis de entrada:
+
+* `N _0` → `N ₀`
+* `x ^n` → `x ⁿ`
+* `a _i` → `a ᵢ`
+
+En cambio, si el símbolo se encuentra unido a la palabra anterior, se interpreta como una única palabra y **no se realiza la traducción**:
+
+* `N_0` → `N_0`
+* `x^n` → `x^n`
+* `a_i` → `a_i`
+
+Por lo tanto, **todos los símbolos o palabras clave que se quieran traducir deben estar separados por espacios**.
+
 ## Lógica
+
 
 | Palabra        | Símbolo |
 | -------------- | ------- |
