@@ -10,16 +10,24 @@
 </head>
 <body>
     <div id="principal">
-
-        <textarea id="entrada" placeholder="Ingrese texto..."></textarea>
         <div class="extra">
-            <button class="boton" id="copiar">📋</button>
-            <h1>Revisar la 
-                <a href="https://github.com/TobiasIvanGodoy/LaTeXito" target="_blank">documentación</a>
-                para ver el diccionario completo
-            </h1>
+            <div class="contenedor"> 
+                <label for="entrada"> Entrada</label>
+                <textarea class="boxel" id="entrada" placeholder="Ingrese texto..."></textarea>
+            </div>
+            <div class="contenedor"> 
+                <label for="salida"> Salida</label>
+                <textarea class="boxel" id="salida" placeholder="apretar ╰───╯ (espacio) para procesar..." disabled></textarea> 
+            </div>
         </div>
         
+        <button class="boton" id="copiar">
+            <img src="portapapeles.png" alt="boton para copiar" width="100%" height="100%">
+        </button>
+        <h1>Revisar la 
+            <a href="https://github.com/TobiasIvanGodoy/LaTeXito" target="_blank">documentación</a>
+            para ver el diccionario completo
+        </h1>
     </div>
     <script src="script.js"></script>
 </body>

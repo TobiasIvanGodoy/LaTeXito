@@ -35,6 +35,7 @@ Por lo tanto, **todos los símbolos o palabras clave que se quieran traducir deb
 | `siSoloSi`     | ⇔       |
 | `implicadoPor` | ⇐       |
 | `probado`      | □       |
+| `talQue`       | /        |
 
 ## Comparadores
 

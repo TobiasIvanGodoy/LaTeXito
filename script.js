@@ -1,5 +1,6 @@
 const copiar = document.getElementById("copiar")
 const entrada = document.getElementById("entrada")
+const salida = document.getElementById("salida")
 
 const traductor = {
     "paraTodo": "∀",
@@ -12,6 +13,7 @@ const traductor = {
     "siSoloSi": "⇔",
     "implicadoPor": "⇐",
     "probado": "□",
+    "talQue" : "/",
 
     "menorIgual": "≤",
     "mayorIgual": "≥",
@@ -140,13 +142,13 @@ const traductor = {
 
 
 `Tareas restantes:
--Cambiar el texto procesado por uno tipo innerHTML
--Implementar superindices y subindices con <sup> y <sub>
+-Cambiar el texto procesado por uno tipo innerHTML (no hizo falta)
+-Implementar superindices y subindices con <sup> y <sub> (Hecho a fuerza bruta)
 -Hacer el procesado ignore las secuencias de escape (Hecho)
 -Mejorar el diseño de la interfaz, opcional.`
 copiar.addEventListener("click", function() {
 
-    const texto = document.getElementById("entrada");
+    const texto = document.getElementById("salida");
 
     navigator.clipboard.writeText(texto.value)
 
@@ -172,6 +174,6 @@ entrada.addEventListener("keydown", (event) => {
             }
         }
 
-        entrada.value = procesado.trim();
+        salida.value = procesado.trim();
     }
 });
