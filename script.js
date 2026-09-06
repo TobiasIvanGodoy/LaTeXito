@@ -1,6 +1,7 @@
 const copiar = document.getElementById("copiar")
 const entrada = document.getElementById("entrada")
 const salida = document.getElementById("salida")
+const procesar = document.getElementById("procesar")
 
 const traductor = {
     "paraTodo": "∀",
@@ -177,3 +178,27 @@ entrada.addEventListener("keydown", (event) => {
         salida.value = procesado.trim();
     }
 });
+
+procesar.addEventListener("click", function() {
+    const entrada = document.getElementById("entrada");
+    const texto = entrada.value;
+    const palabras = texto.split(/(\s+)/);
+    let procesado = "";
+
+    for (const palabra of palabras) {
+        if (traductor[palabra]) {
+            procesado += traductor[palabra];
+        } else {
+            procesado += palabra;
+        }
+    }
+
+    salida.value = procesado.trim();
+
+    procesar.classList.add("animacion1")
+
+    setTimeout(() => {
+        procesar.classList.remove("animacion1");
+    }, 400)
+});
+
