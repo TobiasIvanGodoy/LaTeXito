@@ -2,6 +2,11 @@ const copiar = document.getElementById("copiar")
 const entrada = document.getElementById("entrada")
 const salida = document.getElementById("salida")
 const procesar = document.getElementById("procesar")
+const borrador = localStorage.getItem("latexito_borrador");
+
+if (borrador !== null) {
+    entrada.value = borrador;
+}
 
 const traductor = {
     "paraTodo": "∀",
@@ -176,6 +181,7 @@ entrada.addEventListener("keydown", (event) => {
         }
 
         salida.value = procesado.trim();
+        localStorage.setItem("latexito_borrador", entrada.value);
     }
 });
 
@@ -194,6 +200,7 @@ procesar.addEventListener("click", function() {
     }
 
     salida.value = procesado.trim();
+    localStorage.setItem("latexito_borrador", entrada.value);
 
     procesar.classList.add("animacion1")
 
