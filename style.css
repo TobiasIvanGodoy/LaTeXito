@@ -14,16 +14,9 @@ html, body {
 body {
     min-height: 100vh;
 
-    background:
-        linear-gradient(
-            135deg,
-            #6ec6ff 0%,
-            #a98cff 35%,
-            #ff8bd1 70%,
-            #ffd36e 100%
-        );
+    background: #f4e9bd;
 
-    color: #34254f;
+    color: #171717;
 }
 
 #principal {
@@ -65,31 +58,18 @@ body {
 }
 
 label {
-    color: white;
+    color: #171717;
     font-weight: bold;
     font-size: 22px;
-    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2);
 
-    text-shadow:
-        2px 2px 0px #6b4fa3,
-        3px 3px 0px rgba(255, 255, 255, 0.5);
-    
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,0.9),
-            rgba(225,215,255,0.85)
-        );
-    
-    box-shadow:
-        inset 3px 3px 0px rgba(255,255,255,0.95),
-        inset -3px -3px 0px rgba(116,91,167,0.35),
-        6px 6px 0px rgba(74,53,117,0.3);
+    background: #fff8d8;
 
-    border: 4px solid #8c78c9;
-    border-radius: 18px;
+    border: 4px solid #171717;
+    border-radius: 0;
+
     padding: 1vh 2vw;
-    
+
+    box-shadow: 6px 6px 0 #171717;
 }
 
 .boxel {
@@ -100,49 +80,33 @@ label {
 
     resize: none;
 
-    border: 4px solid #8c78c9;
-    border-radius: 18px;
+    border: 4px solid #171717;
+    border-radius: 0;
 
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,0.9),
-            rgba(225,215,255,0.85)
-        );
+    background: #fffdf0;
 
-    color: #30234a;
+    color: #171717;
 
     outline: none;
 
-    box-shadow:
-        inset 3px 3px 0px rgba(255,255,255,0.95),
-        inset -3px -3px 0px rgba(116,91,167,0.35),
-        6px 6px 0px rgba(74,53,117,0.3);
+    box-shadow: 6px 6px 0 #171717;
 
     transition:
-        transform 0.15s ease,
-        box-shadow 0.15s ease,
-        background 0.15s ease;
+        transform 0.1s ease,
+        box-shadow 0.1s ease,
+        background 0.1s ease;
 }
 
 .boxel:focus {
-    background:
-        linear-gradient(
-            180deg,
-            #ffffff,
-            #eee8ff
-        );
+    background: #ffffff;
 
-    box-shadow:
-        inset 3px 3px 0px white,
-        inset -3px -3px 0px rgba(116,91,167,0.3),
-        7px 7px 0px rgba(74,53,117,0.4);
+    box-shadow: 8px 8px 0 #171717;
 
-    transform: translateY(-2px);
+    transform: translate(-2px, -2px);
 }
 
 .boxel::placeholder {
-    color: #897ba8;
+    color: #77715c;
     opacity: 1;
 }
 
@@ -150,48 +114,37 @@ label {
     height: 8vh;
     aspect-ratio: 1 / 1;
 
-    border: 3px solid #7259a8;
-    border-radius: 20px;
+    border: 4px solid #171717;
+    border-radius: 0;
 
-    background:
-        linear-gradient(
-            135deg,
-            #ffffff,
-            #d8caff
-        );
+    background: #fff8d8;
 
-    box-shadow:
-        inset 3px 3px 0px rgba(255,255,255,1),
-        inset -3px -3px 0px rgba(95,70,145,0.3),
-        5px 5px 0px rgba(74,53,117,0.35);
+    box-shadow: 5px 5px 0 #171717;
 
     cursor: pointer;
 
     transition:
-        transform 0.1s,
-        box-shadow 0.1s,
-        background 0.1s;
+        transform 0.08s,
+        box-shadow 0.08s,
+        background 0.08s;
 }
 
 .boton:hover {
-    background:
-        linear-gradient(
-            135deg,
-            #ffffff,
-            #ebdcff
-        );
+    background: #ffe87a;
 
-    transform: translateY(-2px);
+    transform: translate(-2px, -2px);
+
+    box-shadow: 7px 7px 0 #171717;
 }
 
 .boton img {
-    border-radius: 20px;
+    border-radius: 0;
 }
-.boton:active {
-    transform: translate(3px, 3px);
 
-    box-shadow:
-        inset 3px 3px 0px rgba(95,70,145,0.25);
+.boton:active {
+    transform: translate(4px, 4px);
+
+    box-shadow: 1px 1px 0 #171717;
 }
 
 h1 {
@@ -200,22 +153,16 @@ h1 {
     font-size: 16px;
     font-weight: bold;
 
-    color: white;
-
-    text-shadow:
-        2px 2px 0px #7355a6;
+    color: #171717;
 }
 
 h1 a {
-    color: #fff7a8;
+    color: #171717;
     text-decoration: underline;
-
-    text-shadow:
-        1px 1px 0px #7557a6;
 }
 
 h1 a:hover {
-    color: white;
+    color: #6b5a00;
 }
 
 .animacion1 {
@@ -224,21 +171,11 @@ h1 a:hover {
 
 @keyframes confirmar {
     from {
-        background:
-            linear-gradient(
-                135deg,
-                #8cff9c,
-                #58e86d
-            );
+        background: #9be28f;
     }
 
     to {
-        background:
-            linear-gradient(
-                135deg,
-                #ffffff,
-                #d8caff
-            );
+        background: #fff8d8;
     }
 }
 
@@ -275,7 +212,6 @@ h1 a:hover {
         height: 7vh;
     }
 }
-
 
 @media (orientation: landscape) {
 
