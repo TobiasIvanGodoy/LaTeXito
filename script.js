@@ -200,6 +200,7 @@ procesar.addEventListener("click", function() {
     }
 
     salida.value = procesado.trim();
+    entrada.value = procesado.trim();
     localStorage.setItem("latexito_borrador", entrada.value);
 
     procesar.classList.add("animacion1")
