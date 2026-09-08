@@ -6,6 +6,7 @@ const borrador = localStorage.getItem("latexito_borrador");
 
 if (borrador !== null) {
     entrada.value = borrador;
+    salida.value = borrador;
 }
 
 const traductor = {
@@ -25,6 +26,11 @@ const traductor = {
     "mayorIgual": "≥",
     "distinto": "≠",
     "aproximadamente": "≈",
+    "integral" : "∫",
+    "delta" : "Δ",
+    "sumatoria" : "∑",
+    "productoria" : "∏",
+    "congruente" : "≡",
 
     "pertenece": "∈",
     "noPertenece": "∉",
@@ -40,6 +46,7 @@ const traductor = {
     "proporcional": "∝",
     "tiende": "→",
     "aleph0": "ℵ₀",
+    "cardContinuo" : "𝔠",
 
     "alpha": "α",
     "beta": "β",
@@ -107,6 +114,13 @@ const traductor = {
     "^7" : "⁷",
     "^8" : "⁸",
     "^9" : "⁹",
+    "^+" : "⁺",
+    "^-" : "⁻",
+    "^=" : "⁼",
+    "^(" : "⁽",
+    "^(" : "⁾",
+    "^!" : "ꜝ",
+    
 
     "_0" : "₀",
     "_1" : "₁",
@@ -118,6 +132,11 @@ const traductor = {
     "_7" : "₇",
     "_8" : "₈",
     "_9" : "₉",
+    "_+" : "₊",
+    "_-" : "₋",
+    "_=" : "₌",
+    "_(" : "₍",
+    "_)" : "₎",
     
     "^h" : "ʰ",
     "^i" : "ⁱ",
@@ -151,7 +170,9 @@ const traductor = {
 -Cambiar el texto procesado por uno tipo innerHTML (no hizo falta)
 -Implementar superindices y subindices con <sup> y <sub> (Hecho a fuerza bruta)
 -Hacer el procesado ignore las secuencias de escape (Hecho)
--Mejorar el diseño de la interfaz, opcional.`
+-Mejorar el diseño de la interfaz, opcional.(Hecho)
+-Agregar una funcion para el procedimiento de aplastar caracteres.`
+
 copiar.addEventListener("click", function() {
 
     const texto = document.getElementById("salida");
@@ -165,43 +186,66 @@ copiar.addEventListener("click", function() {
     }, 400)
 })
 
-entrada.addEventListener("keydown", (event) => {
-    if (event.key == " ") {
-        const entrada = document.getElementById("entrada");
+function procesarTexto(btnProcesado) {
+     const entrada = document.getElementById("entrada");
         const texto = entrada.value;
         const palabras = texto.split(/(\s+)/);
-        let procesado = "";
 
-        for (const palabra of palabras) {
-            if (traductor[palabra]) {
-                procesado += traductor[palabra];
+        let procesado = "";
+        let esperandoCierre = false;
+
+        for (let i = 0; i < palabras.length; i++) {
+
+            if (palabras[i] === "aplastar{") {
+                esperandoCierre = true;
+                continue;
+            }
+
+            if (palabras[i] === "}") {
+                esperandoCierre = false;
+                continue;
+            }
+
+            if (esperandoCierre) {
+
+                if (palabras[i] === " ") {
+                    continue;
+                }
+
+                if (traductor[palabras[i]]) {
+                    procesado += traductor[palabras[i]];
+                } else {
+                    procesado += palabras[i];
+                }
+
             } else {
-                procesado += palabra;
+
+                if (traductor[palabras[i]]) {
+                    procesado += traductor[palabras[i]];
+                } else {
+                    procesado += palabras[i];
+                }
             }
         }
 
         salida.value = procesado.trim();
+        if (btnProcesado) {
+            entrada.value = procesado.trim();
+        }
+
         localStorage.setItem("latexito_borrador", entrada.value);
+}
+
+entrada.addEventListener("keydown", (event) => {
+    if (event.key == " " || event.key == "Enter") {
+       procesarTexto(false)
     }
 });
 
+
 procesar.addEventListener("click", function() {
-    const entrada = document.getElementById("entrada");
-    const texto = entrada.value;
-    const palabras = texto.split(/(\s+)/);
-    let procesado = "";
-
-    for (const palabra of palabras) {
-        if (traductor[palabra]) {
-            procesado += traductor[palabra];
-        } else {
-            procesado += palabra;
-        }
-    }
-
-    salida.value = procesado.trim();
-    entrada.value = procesado.trim();
-    localStorage.setItem("latexito_borrador", entrada.value);
+    
+    procesarTexto(true)
 
     procesar.classList.add("animacion1")
 

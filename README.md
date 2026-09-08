@@ -1,6 +1,6 @@
 # Diccionario
 
-LaTeXito utiliza un diccionario de traducción para convertir palabras clave en símbolos matemáticos. Las palabras clave deben escribirse utilizando **camelCase**.
+LaTeXito utiliza un diccionario de traducción para convertir palabras clave en símbolos matemáticos. Las palabras clave deben escribirse utilizando **camelCase** cuando corresponda.
 
 ## Sintaxis de los símbolos
 
@@ -20,8 +20,43 @@ En cambio, si el símbolo se encuentra unido a la palabra anterior, se interpret
 
 Por lo tanto, **todos los símbolos o palabras clave que se quieran traducir deben estar separados por espacios**.
 
-## Lógica
+## Aplastar caracteres
 
+LaTeXito permite utilizar `aplastar{ ... }` para **eliminar los espacios entre los elementos contenidos dentro de las llaves**.
+
+La sintaxis es:
+
+`aplastar{ elemento1 elemento2 elemento3 }`
+
+Por ejemplo:
+
+`aplastar{ paraTodo existe }`
+
+produce:
+
+`∀∃`
+
+Mientras que, sin `aplastar`:
+
+`paraTodo existe`
+
+produce:
+
+`∀ ∃`
+
+Esto permite utilizar la sintaxis habitual de LaTeXito, basada en palabras separadas por espacios, y posteriormente **aplastar el resultado cuando se necesita que los símbolos queden unidos**.
+
+También se siguen aplicando las traducciones del diccionario dentro de `aplastar`:
+
+`aplastar{ x ^2 + y ^2 }`
+
+produce:
+
+`x²+y²`
+
+Los espacios que se encuentran dentro de `aplastar{ ... }` son ignorados, mientras que los espacios que se encuentran fuera se conservan.
+
+## Lógica
 
 | Palabra        | Símbolo |
 | -------------- | ------- |
@@ -35,9 +70,9 @@ Por lo tanto, **todos los símbolos o palabras clave que se quieran traducir deb
 | `siSoloSi`     | ⇔       |
 | `implicadoPor` | ⇐       |
 | `probado`      | □       |
-| `talQue`       | /        |
+| `talQue`       | /       |
 
-## Comparadores
+## Comparadores y operadores matemáticos
 
 | Palabra           | Símbolo |
 | ----------------- | ------- |
@@ -45,6 +80,10 @@ Por lo tanto, **todos los símbolos o palabras clave que se quieran traducir deb
 | `mayorIgual`      | ≥       |
 | `distinto`        | ≠       |
 | `aproximadamente` | ≈       |
+| `integral`        | ∫       |
+| `sumatoria`       | ∑       |
+| `productoria`     | ∏       |
+| `congruente`      | ≡       |
 
 Los operadores `<`, `>`, `=` se pueden escribir directamente.
 
@@ -71,16 +110,9 @@ Los operadores `<`, `>`, `=` se pueden escribir directamente.
 | `proporcional` | ∝       |
 | `tiende`       | →       |
 | `aleph0`       | ℵ₀      |
+| `cardContinuo` | 𝔠      |
 
-## Conjuntos numéricos
-
-| Palabra      | Símbolo |
-| ------------ | ------- |
-| `naturales`  | ℕ       |
-| `enteros`    | ℤ       |
-| `racionales` | ℚ       |
-| `reales`     | ℝ       |
-| `complejos`  | ℂ       |
+`aleph0` representa la cardinalidad de los números naturales, mientras que `cardContinuo` representa la cardinalidad del continuo.
 
 ## Letras griegas minúsculas
 
@@ -140,6 +172,16 @@ Los operadores `<`, `>`, `=` se pueden escribir directamente.
 | `Psi`     | Ψ       |
 | `Omega`   | Ω       |
 
+## Conjuntos numéricos
+
+| Palabra      | Símbolo |
+| ------------ | ------- |
+| `naturales`  | ℕ       |
+| `enteros`    | ℤ       |
+| `racionales` | ℚ       |
+| `reales`     | ℝ       |
+| `complejos`  | ℂ       |
+
 ## Superíndices
 
 | Entrada | Símbolo |
@@ -154,8 +196,12 @@ Los operadores `<`, `>`, `=` se pueden escribir directamente.
 | `^7`    | ⁷       |
 | `^8`    | ⁸       |
 | `^9`    | ⁹       |
-| `^a`    | ᵃ       |
-| `^e`    | ᵉ       |
+| `^+`    | ⁺       |
+| `^-`    | ⁻       |
+| `^=`    | ⁼       |
+| `^(`    | ⁽       |
+| `^)`    | ⁾       |
+| `^!`    | ꜝ       |
 | `^h`    | ʰ       |
 | `^i`    | ⁱ       |
 | `^j`    | ʲ       |
@@ -168,9 +214,6 @@ Los operadores `<`, `>`, `=` se pueden escribir directamente.
 | `^r`    | ʳ       |
 | `^s`    | ˢ       |
 | `^t`    | ᵗ       |
-| `^u`    | ᵘ       |
-| `^v`    | ᵛ       |
-| `^x`    | ˣ       |
 
 ## Subíndices
 
@@ -186,8 +229,11 @@ Los operadores `<`, `>`, `=` se pueden escribir directamente.
 | `_7`    | ₇       |
 | `_8`    | ₈       |
 | `_9`    | ₉       |
-| `_a`    | ₐ       |
-| `_e`    | ₑ       |
+| `_+`    | ₊       |
+| `_-`    | ₋       |
+| `_=`    | ₌       |
+| `_(`    | ₍       |
+| `_)`    | ₎       |
 | `_h`    | ₕ       |
 | `_i`    | ᵢ       |
 | `_j`    | ⱼ       |
@@ -200,8 +246,5 @@ Los operadores `<`, `>`, `=` se pueden escribir directamente.
 | `_r`    | ᵣ       |
 | `_s`    | ₛ       |
 | `_t`    | ₜ       |
-| `_u`    | ᵤ       |
-| `_v`    | ᵥ       |
-| `_x`    | ₓ       |
 
-> **Nota:** El diccionario es parte del código fuente de Latexito. Para modificarlo o agregar nuevas palabras y símbolos, se puede modificar directamente el objeto `traductor` en `script.js` o crear un fork del proyecto.
+> **Nota:** El diccionario es parte del código fuente de LaTeXito. Para modificarlo o agregar nuevas palabras y símbolos, se puede modificar directamente el objeto `traductor` en `script.js` o crear un fork del proyecto.
