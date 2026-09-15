@@ -9,13 +9,17 @@ LaTeXito procesa la entrada **palabra por palabra**. Por este motivo, los elemen
 Esto es especialmente importante para los superíndices y subíndices, que utilizan `^` y `_` como sintaxis de entrada:
 
 * `N _0` → `N ₀`
+
 * `x ^n` → `x ⁿ`
+
 * `a _i` → `a ᵢ`
 
 En cambio, si el símbolo se encuentra unido a la palabra anterior, se interpreta como una única palabra y **no se realiza la traducción**:
 
 * `N_0` → `N_0`
+
 * `x^n` → `x^n`
+
 * `a_i` → `a_i`
 
 Por lo tanto, **todos los símbolos o palabras clave que se quieran traducir deben estar separados por espacios**.
@@ -58,193 +62,195 @@ Los espacios que se encuentran dentro de `aplastar{ ... }` son ignorados, mientr
 
 ## Lógica
 
-| Palabra        | Símbolo |
+| Palabra | Símbolo |
 | -------------- | ------- |
-| `paraTodo`     | ∀       |
-| `existe`       | ∃       |
-| `noExiste`     | ∄       |
-| `yL`           | ∧       |
-| `oL`           | ∨       |
-| `noL`          | ¬       |
-| `implica`      | ⇒       |
-| `siSoloSi`     | ⇔       |
-| `implicadoPor` | ⇐       |
-| `probado`      | □       |
-| `talQue`       | /       |
+| `paraTodo` | ∀ |
+| `existe` | ∃ |
+| `noExiste` | ∄ |
+| `yL` | ∧ |
+| `oL` | ∨ |
+| `noL` | ¬ |
+| `implica` | ⇒ |
+| `noImplica` | ⇏ |
+| `siSoloSi` | ⇔ |
+| `implicadoPor` | ⇐ |
+| `noImplicadoPor` | ⇍ |
+| `probado` | □ |
+| `talQue` | / |
 
 ## Comparadores y operadores matemáticos
 
-| Palabra           | Símbolo |
+| Palabra | Símbolo |
 | ----------------- | ------- |
-| `menorIgual`      | ≤       |
-| `mayorIgual`      | ≥       |
-| `distinto`        | ≠       |
-| `aproximadamente` | ≈       |
-| `integral`        | ∫       |
-| `sumatoria`       | ∑       |
-| `productoria`     | ∏       |
-| `congruente`      | ≡       |
-
-Los operadores `<`, `>`, `=` se pueden escribir directamente.
+| `menorIgual` | ≤ |
+| `mayorIgual` | ≥ |
+| `distinto` | ≠ |
+| `aproximadamente` | ≈ |
+| `integral` | ∫ |
+| `sumatoria` | ∑ |
+| `productoria` | ∏ |
+| `congruente` | ≡ |
+| `sumaDirecta` | ⊕ |
 
 ## Conjuntos y relaciones
 
-| Palabra                 | Símbolo |
+| Palabra | Símbolo |
 | ----------------------- | ------- |
-| `pertenece`             | ∈       |
-| `noPertenece`           | ∉       |
-| `subconjunto`           | ⊆       |
-| `subconjuntoEstricto`   | ⊂       |
-| `noSubconjunto`         | ⊈       |
-| `noSubconjuntoEstricto` | ⊄       |
-| `union`                 | ∪       |
-| `interseccion`          | ∩       |
-| `vacio`                 | ∅       |
-| `complemento`           | ᶜ       |
+| `pertenece` | ∈ |
+| `noPertenece` | ∉ |
+| `subconjunto` | ⊆ |
+| `subconjuntoEstricto` | ⊂ |
+| `noSubconjunto` | ⊈ |
+| `noSubconjuntoEstricto` | ⊄ |
+| `union` | ∪ |
+| `interseccion` | ∩ |
+| `vacio` | ∅ |
+| `complemento` | ᶜ |
 
 ## Otros símbolos
 
-| Palabra        | Símbolo |
+| Palabra | Símbolo |
 | -------------- | ------- |
-| `infinito`     | ∞       |
-| `proporcional` | ∝       |
-| `tiende`       | →       |
-| `aleph0`       | ℵ₀      |
-| `cardContinuo` | 𝔠      |
-
-`aleph0` representa la cardinalidad de los números naturales, mientras que `cardContinuo` representa la cardinalidad del continuo.
+| `infinito` | ∞ |
+| `proporcional` | ∝ |
+| `tiende` | → |
+| `noTiende` | ↛ |
+| `aleph0` | ℵ₀ |
+| `cardContinuo` | 𝔠 |
+| `ortogonal` | ⊥ |
 
 ## Letras griegas minúsculas
 
-| Palabra   | Símbolo |
+| Palabra | Símbolo |
 | --------- | ------- |
-| `alpha`   | α       |
-| `beta`    | β       |
-| `gamma`   | γ       |
-| `delta`   | δ       |
-| `epsilon` | ε       |
-| `zeta`    | ζ       |
-| `eta`     | η       |
-| `theta`   | θ       |
-| `iota`    | ι       |
-| `kappa`   | κ       |
-| `lambda`  | λ       |
-| `mu`      | μ       |
-| `nu`      | ν       |
-| `xi`      | ξ       |
-| `omicron` | ο       |
-| `pi`      | π       |
-| `rho`     | ρ       |
-| `sigma`   | σ       |
-| `tau`     | τ       |
-| `upsilon` | υ       |
-| `phi`     | φ       |
-| `chi`     | χ       |
-| `psi`     | ψ       |
-| `omega`   | ω       |
+| `alpha` | α |
+| `beta` | β |
+| `gamma` | γ |
+| `delta` | δ |
+| `epsilon` | ε |
+| `zeta` | ζ |
+| `eta` | η |
+| `theta` | θ |
+| `iota` | ι |
+| `kappa` | κ |
+| `lambda` | λ |
+| `mu` | μ |
+| `nu` | ν |
+| `xi` | ξ |
+| `omicron` | ο |
+| `pi` | π |
+| `rho` | ρ |
+| `sigma` | σ |
+| `tau` | τ |
+| `upsilon` | υ |
+| `phi` | φ |
+| `chi` | χ |
+| `psi` | ψ |
+| `omega` | ω |
 
 ## Letras griegas mayúsculas
 
-| Palabra   | Símbolo |
+| Palabra | Símbolo |
 | --------- | ------- |
-| `Alpha`   | Α       |
-| `Beta`    | Β       |
-| `Gamma`   | Γ       |
-| `Delta`   | Δ       |
-| `Epsilon` | Ε       |
-| `Zeta`    | Ζ       |
-| `Eta`     | Η       |
-| `Theta`   | Θ       |
-| `Iota`    | Ι       |
-| `Kappa`   | Κ       |
-| `Lambda`  | Λ       |
-| `Mu`      | Μ       |
-| `Nu`      | Ν       |
-| `Xi`      | Ξ       |
-| `Omicron` | Ο       |
-| `Pi`      | Π       |
-| `Rho`     | Ρ       |
-| `Sigma`   | Σ       |
-| `Tau`     | Τ       |
-| `Upsilon` | Υ       |
-| `Phi`     | Φ       |
-| `Chi`     | Χ       |
-| `Psi`     | Ψ       |
-| `Omega`   | Ω       |
+| `Alpha` | Α |
+| `Beta` | Β |
+| `Gamma` | Γ |
+| `Delta` | Δ |
+| `Epsilon` | Ε |
+| `Zeta` | Ζ |
+| `Eta` | Η |
+| `Theta` | Θ |
+| `Iota` | Ι |
+| `Kappa` | Κ |
+| `Lambda` | Λ |
+| `Mu` | Μ |
+| `Nu` | Ν |
+| `Xi` | Ξ |
+| `Omicron` | Ο |
+| `Pi` | Π |
+| `Rho` | Ρ |
+| `Sigma` | Σ |
+| `Tau` | Τ |
+| `Upsilon` | Υ |
+| `Phi` | Φ |
+| `Chi` | Χ |
+| `Psi` | Ψ |
+| `Omega` | Ω |
 
 ## Conjuntos numéricos
 
-| Palabra      | Símbolo |
+| Palabra | Símbolo |
 | ------------ | ------- |
-| `naturales`  | ℕ       |
-| `enteros`    | ℤ       |
-| `racionales` | ℚ       |
-| `reales`     | ℝ       |
-| `complejos`  | ℂ       |
+| `naturales` | ℕ |
+| `enteros` | ℤ |
+| `racionales` | ℚ |
+| `reales` | ℝ |
+| `complejos` | ℂ |
 
 ## Superíndices
 
 | Entrada | Símbolo |
 | ------- | ------- |
-| `^0`    | ⁰       |
-| `^1`    | ¹       |
-| `^2`    | ²       |
-| `^3`    | ³       |
-| `^4`    | ⁴       |
-| `^5`    | ⁵       |
-| `^6`    | ⁶       |
-| `^7`    | ⁷       |
-| `^8`    | ⁸       |
-| `^9`    | ⁹       |
-| `^+`    | ⁺       |
-| `^-`    | ⁻       |
-| `^=`    | ⁼       |
-| `^(`    | ⁽       |
-| `^)`    | ⁾       |
-| `^!`    | ꜝ       |
-| `^h`    | ʰ       |
-| `^i`    | ⁱ       |
-| `^j`    | ʲ       |
-| `^k`    | ᵏ       |
-| `^l`    | ˡ       |
-| `^m`    | ᵐ       |
-| `^n`    | ⁿ       |
-| `^o`    | ᵒ       |
-| `^p`    | ᵖ       |
-| `^r`    | ʳ       |
-| `^s`    | ˢ       |
-| `^t`    | ᵗ       |
+| `^0` | ⁰ |
+| `^1` | ¹ |
+| `^2` | ² |
+| `^3` | ³ |
+| `^4` | ⁴ |
+| `^5` | ⁵ |
+| `^6` | ⁶ |
+| `^7` | ⁷ |
+| `^8` | ⁸ |
+| `^9` | ⁹ |
+| `^+` | ⁺ |
+| `^-` | ⁻ |
+| `^=` | ⁼ |
+| `^(` | ⁽ |
+| `^)` | ⁾ |
+| `^!` | ꜝ |
+| `^h` | ʰ |
+| `^i` | ⁱ |
+| `^j` | ʲ |
+| `^k` | ᵏ |
+| `^l` | ˡ |
+| `^m` | ᵐ |
+| `^n` | ⁿ |
+| `^o` | ᵒ |
+| `^p` | ᵖ |
+| `^r` | ʳ |
+| `^s` | ˢ |
+| `^t` | ᵗ |
+| `^a` | ᵃ |
 
 ## Subíndices
 
 | Entrada | Símbolo |
 | ------- | ------- |
-| `_0`    | ₀       |
-| `_1`    | ₁       |
-| `_2`    | ₂       |
-| `_3`    | ₃       |
-| `_4`    | ₄       |
-| `_5`    | ₅       |
-| `_6`    | ₆       |
-| `_7`    | ₇       |
-| `_8`    | ₈       |
-| `_9`    | ₉       |
-| `_+`    | ₊       |
-| `_-`    | ₋       |
-| `_=`    | ₌       |
-| `_(`    | ₍       |
-| `_)`    | ₎       |
-| `_h`    | ₕ       |
-| `_i`    | ᵢ       |
-| `_j`    | ⱼ       |
-| `_k`    | ₖ       |
-| `_l`    | ₗ       |
-| `_m`    | ₘ       |
-| `_n`    | ₙ       |
-| `_o`    | ₒ       |
-| `_p`    | ₚ       |
-| `_r`    | ᵣ       |
-| `_s`    | ₛ       |
-| `_t`    | ₜ       |
+| `_0` | ₀ |
+| `_1` | ₁ |
+| `_2` | ₂ |
+| `_3` | ₃ |
+| `_4` | ₄ |
+| `_5` | ₅ |
+| `_6` | ₆ |
+| `_7` | ₇ |
+| `_8` | ₈ |
+| `_9` | ₉ |
+| `_+` | ₊ |
+| `_-` | ₋ |
+| `_=` | ₌ |
+| `_(` | ₍ |
+| `_)` | ₎ |
+| `_h` | ₕ |
+| `_i` | ᵢ |
+| `_j` | ⱼ |
+| `_k` | ₖ |
+| `_l` | ₗ |
+| `_m` | ₘ |
+| `_n` | ₙ |
+| `_o` | ₒ |
+| `_p` | ₚ |
+| `_r` | ᵣ |
+| `_s` | ₛ |
+| `_t` | ₜ |
 
 > **Nota:** El diccionario es parte del código fuente de LaTeXito. Para modificarlo o agregar nuevas palabras y símbolos, se puede modificar directamente el objeto `traductor` en `script.js` o crear un fork del proyecto.

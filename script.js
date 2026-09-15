@@ -17,10 +17,13 @@ const traductor = {
     "oL": "∨",
     "noL": "¬",
     "implica": "⇒",
+    "noImplica" : "⇏",
     "siSoloSi": "⇔",
     "implicadoPor": "⇐",
+    "noImplicadoPor" : "⇍", 
     "probado": "□",
     "talQue" : "/",
+    "sumaDirecta" : "⊕",
 
     "menorIgual": "≤",
     "mayorIgual": "≥",
@@ -45,8 +48,10 @@ const traductor = {
     "infinito": "∞",
     "proporcional": "∝",
     "tiende": "→",
+    "noTiende" : "↛",
     "aleph0": "ℵ₀",
     "cardContinuo" : "𝔠",
+    "ortogonal" : "⊥",
 
     "alpha": "α",
     "beta": "β",
@@ -150,6 +155,7 @@ const traductor = {
     "^r" : "ʳ",
     "^s" : "ˢ",
     "^t" : "ᵗ",
+    "^a" : "ᵃ",
 
     "_h" : "ₕ",
     "_i" : "ᵢ",
