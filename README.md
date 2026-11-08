@@ -1,198 +1,46 @@
-# Diccionario
+# LaTeXito 2.0
+
+La versión 2.0 trae cambios importantes en el funcionamiento del traductor y en la experiencia de uso. Estas son las novedades:
+
+## Nuevas funcionalidades
+
+### Tokenizador por caracteres
+Se incorporó un nuevo tokenizador que procesa el texto **carácter por carácter**, en lugar de buscar palabras completas. Esto permite escribir expresiones matemáticas de forma más natural, sin necesidad de separar manualmente cada palabra clave.
+
+**Antes:**
+```text
+paraTodo espilon > 0, existe un aplastar{ n _0 }
+```
+
+**Ahora:**
+```text
+paraTodoepsilon > 0, existe un n_0
+```
+
+El tokenizador reconoce las palabras clave incluso cuando están concatenadas con otros caracteres, facilitando la escritura de expresiones matemáticas.
+
+### Diccionario integrado en la interfaz
+Ahora podés consultar el diccionario directamente desde la interfaz principal, sin necesidad de volver a la documentación para buscar una palabra clave o su símbolo correspondiente.
+
+### Gestión del diccionario
+Se incorporaron nuevas opciones para administrar las entradas del diccionario:
+
+- **Agregar:** incorporar nuevas palabras clave y sus respectivos símbolos.
+- **Modificar:** editar entradas existentes.
+- **Eliminar:** quitar entradas que ya no necesites.
+
+### Guardado local
+Los cambios realizados en el diccionario se guardan automáticamente en el almacenamiento local del navegador (`localStorage`).
+
+Esto significa que tus modificaciones se conservan al cerrar o actualizar la página, siempre que vuelvas a utilizar el mismo navegador y no borres sus datos locales.
+
+### Boton de copiado
+Ahora el boton de copiar tiene una animación que explica visualmente que es lo que hace el boton.
+
+**Nota:** Latexito viene con su propio diccionario base, pero ahora podes modificarlo y personalizarlo en la forma que te guste.
+
+# LaTeXito 1.0
+
+### Diccionario
 
 LaTeXito utiliza un diccionario de traducción para convertir palabras clave en símbolos matemáticos. Las palabras clave deben escribirse utilizando **camelCase** cuando corresponda.
-
-## Lógica
-
-| Palabra | Símbolo |
-| -------------- | ------- |
-| `paraTodo` | ∀ |
-| `existe` | ∃ |
-| `noExiste` | ∄ |
-| `yL` | ∧ |
-| `oL` | ∨ |
-| `noL` | ¬ |
-| `implica` | ⇒ |
-| `noImplica` | ⇏ |
-| `siSoloSi` | ⇔ |
-| `implicadoPor` | ⇐ |
-| `noImplicadoPor` | ⇍ |
-| `probado` | □ |
-| `talQue` | / |
-
-## Comparadores y operadores matemáticos
-
-| Palabra | Símbolo |
-| ----------------- | ------- |
-| `menorIgual` | ≤ |
-| `mayorIgual` | ≥ |
-| `distinto` | ≠ |
-| `aproximadamente` | ≈ |
-| `integral` | ∫ |
-| `sumatoria` | ∑ |
-| `productoria` | ∏ |
-| `congruente` | ≡ |
-| `sumaDirecta` | ⊕ |
-
-## Conjuntos y relaciones
-
-| Palabra | Símbolo |
-| ----------------------- | ------- |
-| `pertenece` | ∈ |
-| `noPertenece` | ∉ |
-| `subconjunto` | ⊆ |
-| `subconjuntoEstricto` | ⊂ |
-| `noSubconjunto` | ⊈ |
-| `noSubconjuntoEstricto` | ⊄ |
-| `union` | ∪ |
-| `interseccion` | ∩ |
-| `vacio` | ∅ |
-| `complemento` | ᶜ |
-
-## Otros símbolos
-
-| Palabra | Símbolo |
-| -------------- | ------- |
-| `infinito` | ∞ |
-| `proporcional` | ∝ |
-| `tiende` | → |
-| `noTiende` | ↛ |
-| `aleph0` | ℵ₀ |
-| `cardContinuo` | 𝔠 |
-| `ortogonal` | ⊥ |
-
-## Letras griegas minúsculas
-
-| Palabra | Símbolo |
-| --------- | ------- |
-| `alpha` | α |
-| `beta` | β |
-| `gamma` | γ |
-| `delta` | δ |
-| `epsilon` | ε |
-| `zeta` | ζ |
-| `eta` | η |
-| `theta` | θ |
-| `iota` | ι |
-| `kappa` | κ |
-| `lambda` | λ |
-| `mu` | μ |
-| `nu` | ν |
-| `xi` | ξ |
-| `omicron` | ο |
-| `pi` | π |
-| `rho` | ρ |
-| `sigma` | σ |
-| `tau` | τ |
-| `upsilon` | υ |
-| `phi` | φ |
-| `chi` | χ |
-| `psi` | ψ |
-| `omega` | ω |
-
-## Letras griegas mayúsculas
-
-| Palabra | Símbolo |
-| --------- | ------- |
-| `Alpha` | Α |
-| `Beta` | Β |
-| `Gamma` | Γ |
-| `Delta` | Δ |
-| `Epsilon` | Ε |
-| `Zeta` | Ζ |
-| `Eta` | Η |
-| `Theta` | Θ |
-| `Iota` | Ι |
-| `Kappa` | Κ |
-| `Lambda` | Λ |
-| `Mu` | Μ |
-| `Nu` | Ν |
-| `Xi` | Ξ |
-| `Omicron` | Ο |
-| `Pi` | Π |
-| `Rho` | Ρ |
-| `Sigma` | Σ |
-| `Tau` | Τ |
-| `Upsilon` | Υ |
-| `Phi` | Φ |
-| `Chi` | Χ |
-| `Psi` | Ψ |
-| `Omega` | Ω |
-
-## Conjuntos numéricos
-
-| Palabra | Símbolo |
-| ------------ | ------- |
-| `naturales` | ℕ |
-| `enteros` | ℤ |
-| `racionales` | ℚ |
-| `reales` | ℝ |
-| `complejos` | ℂ |
-
-## Superíndices
-
-| Entrada | Símbolo |
-| ------- | ------- |
-| `^0` | ⁰ |
-| `^1` | ¹ |
-| `^2` | ² |
-| `^3` | ³ |
-| `^4` | ⁴ |
-| `^5` | ⁵ |
-| `^6` | ⁶ |
-| `^7` | ⁷ |
-| `^8` | ⁸ |
-| `^9` | ⁹ |
-| `^+` | ⁺ |
-| `^-` | ⁻ |
-| `^=` | ⁼ |
-| `^(` | ⁽ |
-| `^)` | ⁾ |
-| `^!` | ꜝ |
-| `^h` | ʰ |
-| `^i` | ⁱ |
-| `^j` | ʲ |
-| `^k` | ᵏ |
-| `^l` | ˡ |
-| `^m` | ᵐ |
-| `^n` | ⁿ |
-| `^o` | ᵒ |
-| `^p` | ᵖ |
-| `^r` | ʳ |
-| `^s` | ˢ |
-| `^t` | ᵗ |
-| `^a` | ᵃ |
-
-## Subíndices
-
-| Entrada | Símbolo |
-| ------- | ------- |
-| `_0` | ₀ |
-| `_1` | ₁ |
-| `_2` | ₂ |
-| `_3` | ₃ |
-| `_4` | ₄ |
-| `_5` | ₅ |
-| `_6` | ₆ |
-| `_7` | ₇ |
-| `_8` | ₈ |
-| `_9` | ₉ |
-| `_+` | ₊ |
-| `_-` | ₋ |
-| `_=` | ₌ |
-| `_(` | ₍ |
-| `_)` | ₎ |
-| `_h` | ₕ |
-| `_i` | ᵢ |
-| `_j` | ⱼ |
-| `_k` | ₖ |
-| `_l` | ₗ |
-| `_m` | ₘ |
-| `_n` | ₙ |
-| `_o` | ₒ |
-| `_p` | ₚ |
-| `_r` | ᵣ |
-| `_s` | ₛ |
-| `_t` | ₜ |
-
-> **Nota:** El diccionario es parte del código fuente de LaTeXito. Para modificarlo o agregar nuevas palabras y símbolos, se puede modificar directamente el objeto `traductor` en `script.js` o crear un fork del proyecto.

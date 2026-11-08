@@ -9,32 +9,49 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="oculto" id="overlay">
+        <div id="hud">
+            <div id="tablas">
+                <table id="referencias">
+                    <tr>
+                        <th>
+                            Palabra
+                        </th>
+                        <th>
+                            Símbolo
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
     <div id="principal">
         <div class="extra">
             <div class="contenedor"> 
                 <label for="entrada"> Entrada</label>
-                <textarea class="boxel" id="entrada" placeholder="Ingrese texto..." spellcheck="false"></textarea>
-            </div>
-            <div class="contenedor"> 
-                <label for="salida"> Salida</label>
-                <textarea class="boxel" id="salida" placeholder="procesado dinámico con ╰───╯ (espacio) en PC." disabled spellcheck="false">
-                    
-                </textarea> 
-            </div>
-        </div>
-        <div class="extra2">
-            <button class="boton" id="procesar">
+                <textarea class="boxel" id="entrada" placeholder="Ingrese texto... (Ej: paraTodo, existe, n_0)" spellcheck="false" autocorrect="off"></textarea>
+                <button class="boton" id="procesar">
                 Procesar
-            </button>
-            <button class="boton" id="copiar">
-                <img src="portapapeles.png" alt="boton para copiar" width="100%" height="100%">
-            </button>
+                </button>
+            </div>
+            <div class="contenedor">
+                <label for="salida">Salida</label>
+
+                <div id="contenedorSalida">
+                    <textarea class="boxel" id="salida"
+                        placeholder="procesado dinámico con ╰───╯ (espacio) en PC."
+                        disabled spellcheck="false"></textarea>
+                </div>
+
+                <button class="boton" id="copiar">
+                    <img src="portapapeles.png" alt="boton para copiar" width="100%" height="100%">
+                </button>
+            </div>
         </div>
         
-        <h1>Revisar la 
-            <a href="https://github.com/TobiasIvanGodoy/LaTeXito" target="_blank">documentación</a>
-            para ver el diccionario completo
-        </h1>
+        <button class="boton" id="documentacion">
+            documentación
+        </button>
     </div>
     <script src="script.js"></script>
 </body>

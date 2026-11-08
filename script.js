@@ -1,15 +1,18 @@
+const documentacion = document.getElementById("documentacion")
 const copiar = document.getElementById("copiar")
 const entrada = document.getElementById("entrada")
 const salida = document.getElementById("salida")
 const procesar = document.getElementById("procesar")
-const borrador = localStorage.getItem("latexito_borrador");
+
+let borrador = localStorage.getItem("latexito_borrador");
+let diccionarioLocal = localStorage.getItem("diccionario")
 
 if (borrador !== null) {
     entrada.value = borrador;
     salida.value = borrador;
 }
 
-const traductor = {
+let traductor = {
     "paraTodo": "∀",
     "existe": "∃",
     "noExiste": "∄",
@@ -184,13 +187,12 @@ const traductor = {
     "_y" : "ᵧ"
 };
 
+if (diccionarioLocal === null) {
+    localStorage.setItem("diccionario", JSON.stringify(traductor))
+} else {
+    traductor = JSON.parse(diccionarioLocal)
+}
 
-`Tareas restantes:
--Cambiar el texto procesado por uno tipo innerHTML (no hizo falta)
--Implementar superindices y subindices con <sup> y <sub> (Hecho a fuerza bruta)
--Hacer el procesado ignore las secuencias de escape (Hecho)
--Mejorar el diseño de la interfaz, opcional.(Hecho)
--Agregar una funcion para el procedimiento de aplastar caracteres.`
 
 function tokenizar(texto) {
     const tokens = Object.keys(traductor)
@@ -219,19 +221,6 @@ function tokenizar(texto) {
 
     return resultado;
 }
-
-copiar.addEventListener("click", function() {
-
-    const texto = document.getElementById("salida");
-
-    navigator.clipboard.writeText(texto.value)
-
-    copiar.classList.add("animacion1")
-
-    setTimeout(() => {
-        copiar.classList.remove("animacion1");
-    }, 400)
-})
 
 function procesarTexto(btnProcesado) {
     const texto = entrada.value;
@@ -264,3 +253,254 @@ procesar.addEventListener("click", function() {
     }, 400)
 });
 
+copiar.addEventListener("click", function() {
+
+    const texto = document.getElementById("salida");
+
+    navigator.clipboard.writeText(texto.value).then(() => {
+
+        const mensaje = document.createElement("div");
+        mensaje.id = "mensajeCopiado";
+        mensaje.textContent = "¡Copiado!";
+
+        document.getElementById("contenedorSalida").appendChild(mensaje);
+
+        mensaje.addEventListener("animationend", () => {
+            mensaje.remove();
+        });
+
+    });
+
+});
+
+documentacion.addEventListener("click", function() {
+    
+    const overlay = document.getElementById("overlay")
+    overlay.classList.remove("oculto")
+
+    obtener()
+
+});
+
+function obtener() {
+
+    const hud = document.getElementById("hud");
+
+    if (!document.getElementById("cerrar")) {
+        const cerrar = document.createElement("button");
+        cerrar.id = "cerrar";
+
+        const imagen = document.createElement("img");
+        imagen.src = "btnCerrar.png";
+        imagen.alt = "Cerrar";
+
+        cerrar.appendChild(imagen);
+
+        cerrar.addEventListener("click", () => {
+            document.getElementById("overlay").classList.add("oculto");
+        });
+
+        hud.prepend(cerrar);
+    }
+
+    const tabla = document.getElementById("referencias");
+
+    tabla.innerHTML = `
+        <tr>
+            <th>Palabra</th>
+            <th>Símbolo</th>
+            <th>Eliminar</th>
+            <th>Modificar</th>
+        </tr>
+    `;
+
+    for (const [palabra, simbolo] of Object.entries(traductor).sort(([a], [b]) => a.localeCompare(b))) {
+
+        const fila = document.createElement("tr");
+
+        const celdaPalabra = document.createElement("td");
+        celdaPalabra.textContent = palabra;
+
+        const celdaSimbolo = document.createElement("td");
+        celdaSimbolo.textContent = simbolo;
+
+        const celdaEliminar = document.createElement("td");
+
+        const eliminarBtn = document.createElement("button");
+        eliminarBtn.classList.add("botonesTabla");
+
+        const imagenEliminar = document.createElement("img");
+        imagenEliminar.src = "btnEliminar.png";
+        imagenEliminar.alt = "Eliminar";
+
+        eliminarBtn.appendChild(imagenEliminar);
+
+        eliminarBtn.addEventListener("click", () => {
+            eliminar(palabra);
+        });
+
+        celdaEliminar.appendChild(eliminarBtn);
+
+        const celdaModificar = document.createElement("td");
+
+        const modificarBtn = document.createElement("button");
+        modificarBtn.classList.add("botonesTabla");
+
+        const imagenModificar = document.createElement("img");
+        imagenModificar.src = "btnEditar.png";
+        imagenModificar.alt = "Modificar";
+
+        modificarBtn.appendChild(imagenModificar);
+
+        modificarBtn.addEventListener("click", () => {
+            modificar(palabra, simbolo);
+        });
+
+        celdaModificar.appendChild(modificarBtn);
+
+        fila.appendChild(celdaPalabra);
+        fila.appendChild(celdaSimbolo);
+        fila.appendChild(celdaEliminar);
+        fila.appendChild(celdaModificar);
+
+        tabla.appendChild(fila);
+    }
+
+    agregar();
+}
+
+function eliminar(palabra) {
+
+    const confirmar = confirm(`¿Estás seguro de que querés eliminar "${palabra}"?`);
+
+    if (confirmar) {
+        delete traductor[palabra];
+
+        localStorage.setItem(
+            "diccionario",
+            JSON.stringify(traductor)
+        );
+
+        obtener();
+    }
+}
+function crear_campo_entrada() {
+
+    if (document.getElementById("formAgregar")) return;
+
+    const hud = document.getElementById("hud");
+
+    const formulario = document.createElement("div");
+    formulario.id = "formAgregar";
+
+    const titulo = document.createElement("h3");
+
+    const palabra = document.createElement("input");
+    palabra.type = "text";
+    palabra.placeholder = "Palabra";
+
+    const simbolo = document.createElement("input");
+    simbolo.type = "text";
+    simbolo.placeholder = "Símbolo";
+
+    const confirmar = document.createElement("button");
+
+    const cancelar = document.createElement("button");
+    cancelar.textContent = "Cancelar";
+    cancelar.hidden = true;
+
+    confirmar.addEventListener("click", () => {
+
+        const clave = palabra.value.trim();
+        const valor = simbolo.value.trim();
+
+        if (!clave || !valor) {
+            alert("Completa ambos campos");
+            return;
+        }
+
+        const modo = formulario.dataset.modo;
+
+        if (modo === "agregar") {
+
+            if (Object.hasOwn(traductor, clave)) {
+                alert("Esa palabra ya existe");
+                return;
+            }
+
+            traductor[clave] = valor;
+        }
+
+        else if (modo === "modificar") {
+
+            const original = formulario.dataset.original;
+
+            if (clave !== original && Object.hasOwn(traductor, clave)) {
+                alert("Esa palabra ya existe");
+                return;
+            }
+
+            delete traductor[original];
+            traductor[clave] = valor;
+        }
+
+        localStorage.setItem(
+            "diccionario",
+            JSON.stringify(traductor)
+        );
+
+        obtener();
+    });
+
+    cancelar.addEventListener("click", () => {
+        agregar();
+    });
+
+    formulario.appendChild(titulo);
+    formulario.appendChild(palabra);
+    formulario.appendChild(simbolo);
+    formulario.appendChild(confirmar);
+    formulario.appendChild(cancelar);
+
+    hud.appendChild(formulario);
+}
+
+function modificar(palabra, simbolo) {
+
+    crear_campo_entrada();
+
+    const formulario = document.getElementById("formAgregar");
+    const campos = formulario.querySelectorAll("input");
+    const botones = formulario.querySelectorAll("button");
+
+    formulario.dataset.modo = "modificar";
+    formulario.dataset.original = palabra;
+
+    formulario.querySelector("h3").textContent = "Modificar entrada";
+
+    campos[0].value = palabra;
+    campos[1].value = simbolo;
+
+    botones[0].textContent = "Guardar";
+    botones[1].hidden = false;
+}
+
+
+function agregar() {
+
+    crear_campo_entrada();
+
+    const formulario = document.getElementById("formAgregar");
+    const campos = formulario.querySelectorAll("input");
+    const botones = formulario.querySelectorAll("button");
+
+    formulario.dataset.modo = "agregar";
+
+    formulario.querySelector("h3").textContent = "Agregar entrada";
+
+    campos[0].value = "";
+    campos[1].value = "";
+
+    botones[0].textContent = "Confirmar";
+    botones[1].hidden = true;
+}
