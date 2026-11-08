@@ -24,6 +24,7 @@ const traductor = {
     "probado": "□",
     "talQue" : "/",
     "sumaDirecta" : "⊕",
+    "raiz" : "√",
 
     "menorIgual": "≤",
     "mayorIgual": "≥",
@@ -41,6 +42,7 @@ const traductor = {
     "subconjuntoEstricto": "⊂",
     "noSubconjunto": "⊈",
     "noSubconjuntoEstricto": "⊄",
+    "coordinable" : "∼",
     "union": "∪",
     "interseccion": "∩",
     "vacio": "∅",
@@ -49,6 +51,8 @@ const traductor = {
     "proporcional": "∝",
     "tiende": "→",
     "noTiende" : "↛",
+    "asigna" : "←",
+    "correspondencia" : "↦",
     "aleph0": "ℵ₀",
     "cardContinuo" : "𝔠",
     "ortogonal" : "⊥",
@@ -108,6 +112,7 @@ const traductor = {
     "racionales": "ℚ",
     "reales": "ℝ",
     "complejos": "ℂ",
+    "irracionales" : "𝕀",
 
     "^0" : "⁰",
     "^1" : "¹",
@@ -123,7 +128,7 @@ const traductor = {
     "^-" : "⁻",
     "^=" : "⁼",
     "^(" : "⁽",
-    "^(" : "⁾",
+    "^)" : "⁾",
     "^!" : "ꜝ",
     
 
@@ -142,7 +147,7 @@ const traductor = {
     "_=" : "₌",
     "_(" : "₍",
     "_)" : "₎",
-    
+        
     "^h" : "ʰ",
     "^i" : "ⁱ",
     "^j" : "ʲ",
@@ -155,7 +160,11 @@ const traductor = {
     "^r" : "ʳ",
     "^s" : "ˢ",
     "^t" : "ᵗ",
+    "^u" : "ᵘ",
+    "^v" : "ᵛ",
     "^a" : "ᵃ",
+    "^x" : "ˣ",
+    "^d" : "ᵈ",
 
     "_h" : "ₕ",
     "_i" : "ᵢ",
@@ -169,6 +178,10 @@ const traductor = {
     "_r" : "ᵣ",
     "_s" : "ₛ",
     "_t" : "ₜ",
+    "_u" : "ᵤ",
+    "_v" : "ᵥ",
+    "_x" : "ₓ",
+    "_y" : "ᵧ"
 };
 
 
@@ -178,6 +191,34 @@ const traductor = {
 -Hacer el procesado ignore las secuencias de escape (Hecho)
 -Mejorar el diseño de la interfaz, opcional.(Hecho)
 -Agregar una funcion para el procedimiento de aplastar caracteres.`
+
+function tokenizar(texto) {
+    const tokens = Object.keys(traductor)
+        .sort((a, b) => b.length - a.length);
+
+    let resultado = "";
+    let i = 0;
+
+    while (i < texto.length) {
+        let encontrado = false;
+
+        for (const token of tokens) {
+            if (texto.startsWith(token, i)) {
+                resultado += traductor[token];
+                i += token.length;
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (!encontrado) {
+            resultado += texto[i];
+            i++;
+        }
+    }
+
+    return resultado;
+}
 
 copiar.addEventListener("click", function() {
 
@@ -193,53 +234,17 @@ copiar.addEventListener("click", function() {
 })
 
 function procesarTexto(btnProcesado) {
-     const entrada = document.getElementById("entrada");
-        const texto = entrada.value;
-        const palabras = texto.split(/(\s+)/);
+    const texto = entrada.value;
 
-        let procesado = "";
-        let esperandoCierre = false;
+    const procesado = tokenizar(texto);
 
-        for (let i = 0; i < palabras.length; i++) {
+    salida.value = procesado.trim();
 
-            if (palabras[i] === "aplastar{") {
-                esperandoCierre = true;
-                continue;
-            }
+    if (btnProcesado) {
+        entrada.value = procesado.trim();
+    }
 
-            if (palabras[i] === "}") {
-                esperandoCierre = false;
-                continue;
-            }
-
-            if (esperandoCierre) {
-
-                if (palabras[i] === " ") {
-                    continue;
-                }
-
-                if (traductor[palabras[i]]) {
-                    procesado += traductor[palabras[i]];
-                } else {
-                    procesado += palabras[i];
-                }
-
-            } else {
-
-                if (traductor[palabras[i]]) {
-                    procesado += traductor[palabras[i]];
-                } else {
-                    procesado += palabras[i];
-                }
-            }
-        }
-
-        salida.value = procesado.trim();
-        if (btnProcesado) {
-            entrada.value = procesado.trim();
-        }
-
-        localStorage.setItem("latexito_borrador", entrada.value);
+    localStorage.setItem("latexito_borrador", entrada.value);
 }
 
 entrada.addEventListener("keydown", (event) => {
@@ -247,7 +252,6 @@ entrada.addEventListener("keydown", (event) => {
        procesarTexto(false)
     }
 });
-
 
 procesar.addEventListener("click", function() {
     
