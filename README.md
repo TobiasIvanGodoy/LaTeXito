@@ -44,3 +44,71 @@ Ahora el boton de copiar tiene una animación que explica visualmente que es lo 
 ### Diccionario
 
 LaTeXito utiliza un diccionario de traducción para convertir palabras clave en símbolos matemáticos. Las palabras clave deben escribirse utilizando **camelCase** cuando corresponda.
+
+### Sintaxis de los símbolos
+
+LaTeXito procesa la entrada **palabra por palabra**. Por este motivo, los elementos que se quieran traducir deben estar separados por espacios.
+
+Esto es especialmente importante para los superíndices y subíndices, que utilizan `^` y `_` como sintaxis de entrada:
+
+- `N _0` → `N ₀`
+- `x ^n` → `x ⁿ`
+- `a _i` → `a ᵢ`
+
+En cambio, si el símbolo se encuentra unido a la palabra anterior, se interpreta como una única palabra y **no se realiza la traducción**:
+
+- `N_0` → `N_0`
+- `x^n` → `x^n`
+- `a_i` → `a_i`
+
+Por lo tanto, **todos los símbolos o palabras clave que se quieran traducir deben estar separados por espacios**.
+
+### Aplastar caracteres
+
+LaTeXito permite utilizar `aplastar{ ... }` para **eliminar los espacios entre los elementos contenidos dentro de las llaves**.
+
+La sintaxis es:
+
+```text
+aplastar{ elemento1 elemento2 elemento3 }
+```
+
+Por ejemplo:
+
+```text
+aplastar{ paraTodo existe }
+```
+
+produce:
+
+```text
+∀∃
+```
+
+Mientras que, sin `aplastar`:
+
+```text
+paraTodo existe
+```
+
+produce:
+
+```text
+∀ ∃
+```
+
+Esto permite utilizar la sintaxis habitual de LaTeXito, basada en palabras separadas por espacios, y posteriormente **aplastar el resultado cuando se necesita que los símbolos queden unidos**.
+
+También se siguen aplicando las traducciones del diccionario dentro de `aplastar`:
+
+```text
+aplastar{ x ^2 + y ^2 }
+```
+
+produce:
+
+```text
+x²+y²
+```
+
+Los espacios que se encuentran dentro de `aplastar{ ... }` son ignorados, mientras que los espacios que se encuentran fuera se conservan.
