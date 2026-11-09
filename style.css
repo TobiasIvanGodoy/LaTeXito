@@ -1,3 +1,17 @@
+:root {
+    --fondo: #f4e9bd;
+    --crema: #fff8d8;
+    --blanco: #fffdf0;
+    --amarillo: #ffe87a;
+    --amarillo-hover: #fff1b0;
+    --negro: #171717;
+    --gris: #77715c;
+    --verde: #9be28f;
+
+    --borde: 4px solid var(--negro);
+    --sombra: 5px 5px 0 var(--negro);
+}
+
 * {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 18px;
@@ -7,24 +21,13 @@
 }
 
 html, body {
-    width: 100%;
     min-height: 100%;
 }
 
 body {
     min-height: 100vh;
-
-    background: #f4e9bd;
-
-    color: #171717;
-}
-
-#overlay {
-    background-color: rgba(0, 0, 0, 0.3);
-    position: fixed;
-    z-index: 2;
-    width: 100vw;
-    height: 100vh;
+    background: var(--fondo);
+    color: var(--negro);
 }
 
 #principal {
@@ -37,7 +40,6 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     gap: 2vh;
 }
 
@@ -50,7 +52,6 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-
     gap: 2vw;
 }
 
@@ -62,43 +63,34 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-
     gap: 1vh;
 }
 
 label {
-    color: #171717;
+    color: var(--negro);
     font-weight: bold;
     font-size: 22px;
 
-    background: #fff8d8;
-
-    border: 4px solid #171717;
-    border-radius: 0;
-
+    background: var(--crema);
+    border: var(--borde);
     padding: 1vh 2vw;
 
-    box-shadow: 6px 6px 0 #171717;
+    box-shadow: 6px 6px 0 var(--negro);
 }
 
 .boxel {
     width: 100%;
     height: 90%;
-
     padding: 1vh 1vw;
 
     resize: none;
 
-    border: 4px solid #171717;
-    border-radius: 0;
-
-    background: #fffdf0;
-
-    color: #171717;
-
+    border: var(--borde);
+    background: var(--blanco);
+    color: var(--negro);
     outline: none;
 
-    box-shadow: 6px 6px 0 #171717;
+    box-shadow: 6px 6px 0 var(--negro);
 
     transition:
         transform 0.1s ease,
@@ -107,28 +99,24 @@ label {
 }
 
 .boxel:focus {
-    background: #ffffff;
-
-    box-shadow: 8px 8px 0 #171717;
-
+    background: white;
+    box-shadow: 8px 8px 0 var(--negro);
     transform: translate(-2px, -2px);
 }
 
 .boxel::placeholder {
-    color: #77715c;
+    color: var(--gris);
     opacity: 1;
 }
 
 .boton {
     height: 8vh;
+    width: auto;
     aspect-ratio: 1 / 1;
 
-    border: 4px solid #171717;
-    border-radius: 0;
-
-    background: #fff8d8;
-
-    box-shadow: 5px 5px 0 #171717;
+    border: var(--borde);
+    background: var(--crema);
+    box-shadow: var(--sombra);
 
     cursor: pointer;
 
@@ -138,44 +126,23 @@ label {
         background 0.08s;
 }
 
-.boton:hover {
-    background: #ffe87a;
-
-    transform: translate(-2px, -2px);
-
-    box-shadow: 7px 7px 0 #171717;
+#procesar {
+    width: 200px;
 }
 
-.boton img {
-    border-radius: 0;
+.boton:hover {
+    background: var(--amarillo);
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--negro);
 }
 
 .boton:active {
     transform: translate(4px, 4px);
-
-    box-shadow: 1px 1px 0 #171717;
+    box-shadow: 1px 1px 0 var(--negro);
 }
 
-#cerrar {
-    display: block;
-    width: 28px;
-    height: 28px;
-
-    margin-left: auto;
-
-    border: none;
-    background: none;
-
-    cursor: pointer;
-}
-
-#cerrar img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-#formAgregar {
+#formAgregar,
+#formModificar {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -185,47 +152,101 @@ label {
     margin-top: 2vh;
     padding: 2vh 1vw;
 
-    background: #fffdf0;
-    border: 3px solid #171717;
-    box-shadow: 5px 5px 0 #171717;
+    background: var(--blanco);
+    border: 3px solid var(--negro);
+    box-shadow: 5px 5px 0 var(--negro);
 }
 
-#formAgregar h3 {
+#formAgregar h3,
+#formModificar h3 {
     font-size: 20px;
     font-weight: bold;
 }
 
-#formAgregar input {
+#formAgregar input,
+#formModificar input {
     width: 100%;
     padding: 1vh 1vw;
 
-    background: #fff8d8;
-    color: #171717;
+    background: var(--crema);
+    color: var(--negro);
 
-    border: 3px solid #171717;
-    border-radius: 0;
+    border: 3px solid var(--negro);
     outline: none;
 }
 
-#formAgregar input:focus {
+#formAgregar input:focus,
+#formModificar input:focus {
     background: white;
 }
 
-#formAgregar button {
+#formAgregar button,
+#formModificar button {
     padding: 1vh 2vw;
 
-    background: #ffe87a;
-    color: #171717;
+    background: var(--amarillo);
+    color: var(--negro);
 
-    border: 3px solid #171717;
-    box-shadow: 4px 4px 0 #171717;
+    border: 3px solid var(--negro);
+    box-shadow: 4px 4px 0 var(--negro);
 
     cursor: pointer;
 }
 
-#formAgregar button:active {
+#formAgregar button:active,
+#formModificar button:active {
     transform: translate(3px, 3px);
-    box-shadow: 1px 1px 0 #171717;
+    box-shadow: 1px 1px 0 var(--negro);
+}
+
+#overlay {
+    position: fixed;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#hud {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 80%;
+    max-width: 700px;
+    height: 80vh;
+    max-height: 80vh;
+
+    padding: 3vh 3vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2vh;
+
+    background: var(--crema);
+    border: var(--borde);
+    box-shadow: 8px 8px 0 var(--negro);
+
+    overflow: hidden;
+}
+
+#cerrar {
+    display: block;
+    width: 28px;
+    height: 28px;
+    margin-left: auto;
+
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+#cerrar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .botonesTabla {
@@ -237,10 +258,8 @@ label {
     justify-content: center;
 
     margin: auto;
-
     border: none;
     background: none;
-
     cursor: pointer;
 }
 
@@ -250,79 +269,48 @@ label {
     object-fit: contain;
 }
 
-
-#formModificar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1vh;
-    width: 100%;
-    margin-top: 2vh;
-    padding: 2vh 1vw;
-    background: #fffdf0;
-    border: 3px solid #171717;
-    box-shadow: 5px 5px 0 #171717;
-}
-
-#formModificar h3 {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-#formModificar input {
-    width: 100%;
-    padding: 1vh 1vw;
-    background: #fff8d8;
-    color: #171717;
-    border: 3px solid #171717;
-    border-radius: 0;
-    outline: none;
-}
-
-#formModificar input:focus {
-    background: white;
-}
-
-#formModificar button {
-    padding: 1vh 2vw;
-    background: #ffe87a;
-    color: #171717;
-    border: 3px solid #171717;
-    box-shadow: 4px 4px 0 #171717;
+#cerrar,
+.botonesTabla {
+    border: none;
+    background: none;
     cursor: pointer;
 }
 
-h1 {
-    text-align: center;
+#tablas {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
 
-    font-size: 16px;
-    font-weight: bold;
-
-    color: #171717;
+    overflow-y: auto;
+    overflow-x: auto;
 }
 
-h1 a {
-    color: #171717;
-    text-decoration: underline;
+#referencias {
+    width: 100%;
+    border-collapse: collapse;
+
+    background: var(--blanco);
+    border: 3px solid var(--negro);
 }
 
-h1 a:hover {
-    color: #6b5a00;
-}
-
-#documentacion {
+#referencias th,
+#referencias td {
+    border: 2px solid var(--negro);
     padding: 1vh 1vw;
+    text-align: center;
 }
 
-#contenedorSalida {
-    position: relative;
-    width: 100%;
-    height: 90%;
+#referencias th {
+    background: var(--amarillo);
+    font-weight: bold;
 }
 
-#contenedorSalida .boxel {
-    width: 100%;
-    height: 100%;
+#referencias td {
+    background: var(--blanco);
+}
+
+#referencias tr:hover td {
+    background: var(--amarillo-hover);
 }
 
 #mensajeCopiado {
@@ -332,11 +320,12 @@ h1 a:hover {
     transform: translate(-50%, -50%);
 
     padding: 1vh 2vw;
-    background: #9be28f;
-    color: #171717;
 
-    border: 3px solid #171717;
-    box-shadow: 5px 5px 0 #171717;
+    background: var(--verde);
+    color: var(--negro);
+
+    border: 3px solid var(--negro);
+    box-shadow: 5px 5px 0 var(--negro);
 
     font-weight: bold;
     pointer-events: none;
@@ -362,36 +351,56 @@ h1 a:hover {
 
 @keyframes confirmar {
     from {
-        background: #9be28f;
+        background: var(--verde);
     }
 
     to {
-        background: #fff8d8;
+        background: var(--crema);
     }
+}
+
+#contenedorSalida {
+    position: relative;
+    width: 100%;
+    height: 90%;
+}
+
+#contenedorSalida .boxel {
+    height: 100%;
+}
+
+h1 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--negro);
+}
+
+h1 a {
+    color: var(--negro);
+    text-decoration: underline;
+}
+
+h1 a:hover {
+    color: #6b5a00;
+}
+
+#documentacion {
+    padding: 1vh 1vw;
 }
 
 @media (orientation: portrait) {
 
     #principal {
-        min-height: 100vh;
         padding: 2vh 4vw;
-
         gap: 2vh;
     }
 
     .extra {
-        width: 100%;
         height: 82vh;
-
         padding: 1vh 0;
-
         flex-direction: column;
-
         gap: 2vh;
-    }
-
-   #procesar {
-        width: 200px;
     }
 
     .contenedor {
@@ -417,88 +426,6 @@ h1 a:hover {
     #referencias th,
     #referencias td {
         padding: 1vh 2vw;
-    }
-
-}
-
-#hud {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    padding: 3vh 3vw;
-
-    background: #fff8d8;
-
-    border: 4px solid #171717;
-    box-shadow: 8px 8px 0 #171717;
-
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 2vh;
-
-    height: 80vh;
-    max-height: 80vh;
-
-    overflow: hidden;
-}
-
-#tablas {
-    width: 100%;
-    flex: 1;
-    min-height: 0;
-
-    overflow-y: auto;
-    overflow-x: auto;
-}
-
-#referencias {
-    width: 100%;
-    border-collapse: collapse;
-
-    background: #fffdf0;
-
-    border: 3px solid #171717;
-}
-
-#referencias th,
-#referencias td {
-    border: 2px solid #171717;
-
-    padding: 1vh 1vw;
-
-    text-align: center;
-}
-
-#referencias th {
-    background: #ffe87a;
-    font-weight: bold;
-}
-
-#referencias td {
-    background: #fffdf0;
-}
-
-#referencias tr:hover td {
-    background: #fff1b0;
-}
-
-@media (orientation: landscape) {
-
-    .extra {
-        flex-direction: row;
-    }
-
-    #procesar {
-        width: 200px;
-    }
-
-    .contenedor {
-        width: 50%;
-        height: 100%;
-        gap: 1vw;
     }
 }
 
