@@ -129,8 +129,7 @@ let diccionarios = [
         "/Psi": "Ψ",
         "/Omega": "Ω",
     },
-
-    ,{
+    {
         "^0" : "⁰",
         "^1" : "¹",
         "^2" : "²",
@@ -199,6 +198,29 @@ let diccionarios = [
         "_x" : "ₓ",
         "_y" : "ᵧ"
     }]
+
+const version_actual = 3;
+
+const versionGuardada = localStorage.getItem("versionDiccionarios");
+
+if (versionGuardada !== String(version_actual)) {
+
+    Object.keys(localStorage).forEach(clave => {
+
+        if (/^diccionario\d+$/.test(clave)) {
+            localStorage.removeItem(clave);
+        }
+
+    });
+
+    localStorage.removeItem("nombresDiccionarios");
+
+    localStorage.setItem(
+        "versionDiccionarios",
+        String(version_actual)
+    );
+
+}
 
 const nombresPredeterminados = [
     "Lógica",
