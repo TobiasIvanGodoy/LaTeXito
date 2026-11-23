@@ -199,7 +199,17 @@ let diccionarios = [
         "_y" : "ᵧ"
     }]
 
-const version_actual = 3;
+
+let traductor = {};
+
+function actualizarTraductor() {
+    traductor = Object.assign({}, ...diccionarios);
+}
+
+actualizarTraductor();
+
+
+const version_actual = 4;
 
 const versionGuardada = localStorage.getItem("versionDiccionarios");
 
@@ -259,6 +269,8 @@ diccionarios = nombresDiccionarios.map((nombre, i) => {
 
 function guardarDiccionarios() {
 
+    actualizarTraductor();
+    
     localStorage.setItem(
         "nombresDiccionarios",
         JSON.stringify(nombresDiccionarios)
