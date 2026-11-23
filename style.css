@@ -285,7 +285,7 @@ label {
     overflow-x: auto;
 }
 
-#referencias {
+.referencias {
     width: 100%;
     border-collapse: collapse;
 
@@ -293,24 +293,57 @@ label {
     border: 3px solid var(--negro);
 }
 
-#referencias th,
-#referencias td {
+.referencias th,
+.referencias td {
     border: 2px solid var(--negro);
     padding: 1vh 1vw;
     text-align: center;
 }
 
-#referencias th {
+.referencias th {
     background: var(--amarillo);
     font-weight: bold;
 }
 
-#referencias td {
+.referencias td {
     background: var(--blanco);
 }
 
-#referencias tr:hover td {
+.referencias tr:hover td {
     background: var(--amarillo-hover);
+}
+
+/* Scroll general entre categorías */
+
+#tablas {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.categoriaDiccionario {
+    flex-shrink: 0;
+}
+
+.contenedorTabla {
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.referencias {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.referencias th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 #mensajeCopiado {
@@ -423,8 +456,8 @@ h1 a:hover {
         padding: 2vh 3vw;
     }
 
-    #referencias th,
-    #referencias td {
+    .referencias th,
+    .referencias td {
         padding: 1vh 2vw;
     }
 }
